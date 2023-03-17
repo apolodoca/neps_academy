@@ -1,0 +1,117 @@
+Dois amigos trabalham na Neps Software House desenvolvendo software. Um é um programador e o outro é um designer.
+
+Todo mês eles recebem uma lista de projetos para serem desenvolvidos, os amigos conseguem desenvolver o projeto se tanto o programador tiver habilidade maior do que a habilidade de programação requerida pelo projeto e o designer tiver habilidades de design maior do que a habilidade de design requerida pelo projeto.
+
+Caso consigam desenvolver o projeto cada um recebe um valor de acordo com o que foi combinado com o dono da Software House.
+
+O código abaixo calcula quanto cada um vai ganhar após desenvolver uma lista de projetos. Como eles estão muito ocupado trabalhando em projetos mais importantes eles pediram a você, novo estagiário da empresa, para completar o código abaixo:
+
+
+
+
+#include <stdio.h>
+
+
+class Projeto {
+public:
+    int requisito_programacao;
+    int requisito_design;
+};
+
+class Empregado {
+protected:
+    int valor_por_projeto;
+    int valor_recebido;
+public:
+
+    //Um empregado normal não é capaz de entregar nenhum projeto :(
+    bool capaz(Projeto P){
+        return false;
+    }
+
+    void receber_recompensa(){
+        this->valor_recebido += valor_por_projeto;
+    }
+
+    int get_valor_recebido(){
+        return this->valor_recebido;
+    }
+
+};
+
+class Programador : public Empregado {
+    int habilidade_programacao;
+public:
+
+    //TODO: Complete o código do construtor inicializando os valores corretamente.
+    Programador(int valor_por_projeto, int habilidade_programacao){
+    }
+
+    //TODO: Um programador deve ser capaz de entregar um projeto se sua habilidade de programação é maior que o requisito de programação do projeto.
+    bool capaz(Projeto P){
+    }
+};
+
+class Designer : public Empregado {
+    int habilidade_design;
+public:
+
+    //TODO: Complete o código do construtor inicializando os valores corretamente.
+    Designer(int valor_por_projeto, int habilidade_design){
+    }
+
+    //TODO: Um designer deve ser capaz de entregar um projeto se sua habilidade de design é maior que o requisito de design do projeto.
+    bool capaz(Projeto P){
+    }
+};
+
+int main(){
+
+    int valor, habilidade;
+
+    scanf("%d %d", &valor, &habilidade);
+
+    Programador programador = Programador(valor, habilidade);
+
+    scanf("%d %d", &valor, &habilidade);
+
+    Designer designer = Designer(valor, habilidade);
+
+    int N;
+    scanf("%d", &N);
+    for(int i=0;i<N;i++){
+        Projeto projeto;
+        scanf("%d %d", &projeto.requisito_programacao, &projeto.requisito_design);
+
+        //TODO:Use os métodos das classes acima para calcular quando tanto o programador quanto o designer conseguem desenvolver o projeto P e dê a recompensa a cada um caso eles consigam.
+    }
+
+    printf("Programador: R$ %d\n", programador.get_valor_recebido());
+    printf("Designer: R$ %d\n", designer.get_valor_recebido());
+}
+
+
+
+
+Entrada
+A entrada é composta de múltiplas linhas.
+
+A primeira linha contém o valor que o programador irá receber a cada projeto seguido da sua habilidade em programação.
+
+A segunda linha contém o valor que o designer irá receber a cada projeto seguido da sua habilidade em design.
+
+A terceira linha contém um inteiro 
+
+N, representando quantos projetos eles tem para desenvolver.
+
+As próximas 
+N linhas contém dois inteiro cada, representando os requisitos de habilidade em programação e em design para desenvolver cada projeto, respectivamente.
+
+Saída
+A saída do seu programa já é impressa pelo código de exemplo.
+
+Restrições
+O valor recebido por projeto pode variar entre 1 e 1000 reais;
+As habilidades do programador e do designer podem variar entre 0 e 10;
+Os requisitos de habilidades dos projetos também podem variar entre 0 e 10;
+1≤N≤100
