@@ -1,0 +1,62 @@
+A classe Matematica abaixo deve calcular o valor da média entre 2 ou 3 números (dependendo do método usado). Porém o único método implementado é o que calcula a média real entre dois números reais.
+
+Sua tarefa é implementar os seguinte métodos:
+
+media: calcula a média entre 3 números reais.
+media_inteira: calcula a média inteira entre 2 números inteiros.
+media_inteira: calcula a média inteira entre 3 números inteiros.
+
+Caso esteja em dúvida, dê uma olhada como os métodos são utilizados na função main.
+
+
+
+#include <stdio.h>
+
+class Matematica {
+public:
+
+    static double media(double a, double b){
+        return (a+b)/2.0;
+    }
+
+    //TODO: Implemente os 3 métodos que estão faltando.
+
+};
+
+int main(){
+
+    int N;
+    char O;
+    scanf("%d %c", &N, &O);
+
+    double a, b, c;
+    
+    if(N == 2){        
+        scanf("%lf %lf", &a, &b);
+
+        if(O == 'R'){
+            printf("%.2lf\n", Matematica::media(a, b));
+        }else{
+            printf("%d\n", Matematica::media_inteira((int)a, (int)b));
+        }
+                
+    }else{
+        scanf("%lf %lf %lf", &a, &b, &c);
+
+        if(O == 'R'){
+            printf("%.2lf\n", Matematica::media(a, b, c));
+        }else{
+            printf("%d\n", Matematica::media_inteira((int)a, (int)b, (int)c));
+        }
+
+    }
+    
+}
+
+
+
+A entrada consiste de duas linhas. A primeira linha consiste de um inteiro N e um caractere O.
+A segunda linha contém N números reais.
+
+A saída do seu programa é gerada automaticamente pelo código de exemplo.
+
