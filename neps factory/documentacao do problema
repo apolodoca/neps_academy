@@ -1,0 +1,95 @@
+Na fábrica Neps Factory existem várias caixas empilhadas em 3 pilhas diferentes (conforme a figura abaixo). Normalmente os empregados tem que manualmente remover as caixas quando precisam ser transportadas para a linha de produção. Porém, 
+buscando ser uma fábrica mais moderna, a Neps Factory resolveu experimentar o uso de robôs.
+
+
+Os robôs vem em dois modelos diferentes, cada modelo tem uma estratégia diferente para transportar as caixas. A cada tempo t os robôs fazem as seguintes operações:
+
+Modelo A: Transporta 1 caixa de cada pilha.
+Modelo B: Transporta 3 caixas da pilha A, caso não tenha mais caixas na pilha A, transporta 3 caixas da pilha B, caso não haja caixas em B, transporta 3 caixas da pilha C.
+A fábrica resolveu criar um programa que simula o comportamento dos dois robores, assim ficará mais fácil decidir entre qual modelo comprar.
+
+O código abaixo simula dois robores, um de cada modelo competindo para ver quem consegue completar a tarefa primeiro. Porém o código da classe ModeloA e ModeloB estão faltando, sua tarefa é implementar ambas as classes.
+
+
+
+
+#include <stdio.h>
+
+class Pilhas{
+    int a, b, c;
+public: 
+
+    Pilhas(int a, int b, int c){
+        this->a = a;
+        this->b = b;
+        this->c = c;
+    }
+
+    int get_a(){ return a; }
+
+    int get_b(){ return b; }
+
+    int get_c(){ return c; }
+
+    void remover_caixas(int a, int b, int c){
+        this->a = this->a - a > 0 ? this->a - a : 0;
+        this->b = this->b - b > 0 ? this->b - b : 0;
+        this->c = this->c - c > 0 ? this->c - c : 0;        
+    }
+
+    bool todas_vazias(){
+        if (this->a == 0 and this->b == 0 and this->c == 0){
+            return true;
+        }
+
+        return false;
+    }
+};
+
+class Robo {
+protected:
+    bool completou;
+public:
+    bool completou_tarefa(){ return this->completou; }
+    virtual void operar(Pilhas &P)=0;
+};
+
+//TODO: Implementar classe ModeloA que herda da classe Robo.
+//TODO: Implementar classe ModeloB que herda da classe Robo.
+
+int main(){
+
+    Robo *modeloA;
+    Robo *modeloB;
+    modeloA = new ModeloA();
+    modeloB = new ModeloB();
+
+
+    int a, b, c;
+    scanf("%d %d %d", &a, &b, &c);
+
+    Pilhas PA = Pilhas(a, b, c);
+    Pilhas PB = Pilhas(a, b, c);
+
+    int i = 0;
+    while( !modeloA->completou_tarefa() and !modeloB->completou_tarefa() ){
+        modeloA->operar(PA);
+        modeloB->operar(PB);
+    }
+
+    if(modeloA->completou_tarefa() and modeloB->completou_tarefa()){
+        printf("EMPATE");
+    }else if (modeloA->completou_tarefa()){
+        printf("MODELO A");
+    }else {
+        printf("MODELO B");
+    }
+
+}
+
+
+
+A entrada do seu programa será uma linha contendo 3 inteiros. A quantidade de caixas na pilha A, B e C, respectivamente.
+
+A saída do seu programa deve imprimir qual modelo de robô completou a tarefa primeiro ou "EMPATE" caso os dois completem ao mesmo tempo.
+
