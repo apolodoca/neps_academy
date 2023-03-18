@@ -30,6 +30,8 @@ class Heroi : public Personagem {
 public:
     //TODO: Implemente o construtor da classe Heroi. Lembre-se que o herói tem duas opções de ataque.
     Heroi(int vida, int defesa, int ataque1, int ataque2){
+        this->ataques = new int[2];
+
         this -> vida = vida;
         this -> defesa = defesa;
         this -> ataques[0] = ataque1;
@@ -41,11 +43,11 @@ public:
     void golpear(Personagem &B, int opcao){
         if (opcao == 0)
         {
-            B.receber_dano(this -> ataques[0]);
+            B.receber_dano(*(ataques + opcao) );
         }
         else
         {
-            B.receber_dano(this-> ataques[1]);
+            B.receber_dano(*(ataques + 1));
         }
         
     }
@@ -58,14 +60,15 @@ class Inimigo : public Personagem {
 public:
     //TODO: Implemente o construtor da classe Inimigo. Lembre-se que o inimigo tem apenas uma opção de ataque.
     Inimigo(int vida, int defesa, int ataque){      
+        this->ataques = new int(ataque);
+
         this -> vida = vida;
         this -> defesa = defesa;
-        this -> ataques[2] = ataque;
     }
 
     //TODO: Implemente o método golpear da classe Inimigo.
     void golpear(Personagem &B){
-        B.receber_dano(this-> ataques[2]);
+        B.receber_dano(*ataques);
     }
 
 };
