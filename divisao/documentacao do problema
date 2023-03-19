@@ -1,0 +1,5 @@
+Faça um programa que leia dois números reais A e B digitados pelo teclado e imprima a divisão de A por B.
+
+A entrada consiste de dois números reais A e B, um em cada linha.
+
+A saída do seu programa deve ser um número real S, representando a divisão de A por B com precisão de 2 casas decimais.
