@@ -1,0 +1,24 @@
+o problema tem como solução esse codigo:
+#include <bits/stdc++.h>
+using namespace std;
+int n, v[100020];
+int main(){
+	cin>>n;
+	int curr = 0, answer = 0, prev = v[1];
+	for(int i = 1; i <= n; i++){
+		cin>>v[i];
+		if(v[i] == prev){
+			curr ++;
+		}
+		else{
+			curr = 1;
+			prev = v[i];
+		}
+		answer = max(answer, curr);
+	}
+
+	answer = max(answer, curr);
+	cout<<answer<<"\n";
+}
+ela usa menos for loops e não aloca memoria. Além disso ela também usa a função 
+max() do alghorithm.
