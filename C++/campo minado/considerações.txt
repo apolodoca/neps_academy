@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n, quantidade, tabuleiro[55];	
+	cin >> n;
+	
+	for (int i=1; i<n+1; i++) {
+		cin >> tabuleiro[i];	
+	}
+	
+	tabuleiro[0] = 0;
+	tabuleiro[n+1] = 0;
+	
+	for (int i=1; i<n+1; i++) {
+		quantidade = tabuleiro[i-1] + tabuleiro[i] + tabuleiro[i+1];
+		cout << quantidade << endl;
+	}
+}
+era um codigo bem mais facil, eu me esqueci do fato que arrays são no fim só uma forma de guardar variaveis e portanto pode-se
+fazer matematica com eles. 
